@@ -3,7 +3,7 @@ import React, { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { AdditiveBlending } from 'three';
 import { useFrame, useThree } from 'react-three-fiber';
-import OrbitControls from 'three-orbitcontrols';
+import { OrbitControls } from 'expo-three-orbit-controls/build/OrbitControls';
 import animate from './lib/animate';
 import computeLines from './lib/computeLines';
 import computeParticles from './lib/computeParticles';
@@ -36,7 +36,7 @@ const ParticleField = ({
   gl.setPixelRatio(devicePixelRatio);
 
   // Default distance from camera to particle field
-  const distToParticles = 1750;
+  const distToParticles = 750;
 
   // Setup camera
   controlsRef.current = useMemo(() => {
