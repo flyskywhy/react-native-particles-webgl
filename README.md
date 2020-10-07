@@ -94,6 +94,8 @@ const config = {
     transparency: 0.9,
     // 'square' or 'circle' shape of particles
     shape: 'square',
+    // 'canvas' or 'cube' boundary of particles
+    boundingBox: 'canvas',
     // The exact number of particles to render
     count: 500,
     // The minimum particle size

@@ -73,7 +73,7 @@ const ParticleField = ({
 
   // When the resetCameraFlag option is toggled to 'true', reset camera position
   if (cameraControls.resetCameraFlag === true) {
-    camera.position.set(0, 0, 1750);
+    camera.position.set(0, 0, distToParticles);
   }
 
   // Compute lines between points
