@@ -1,25 +1,25 @@
 {
-  "name": "react-particles-webgl",
-  "version": "1.0.10",
-  "description": "A 2D/3D particle library built on React, Three.js and WebGL",
+  "name": "react-native-particles-webgl",
+  "version": "1.2.0",
+  "description": "A 2D/3D particle library built on react-native, react-native-web, Three.js and WebGL",
   "author": "Tim Ellenberger <timellenberger@gmail.com>",
   "license": "MIT",
-  "repository": "tim-soft/react-particles-webgl",
+  "repository": "flyskywhy/react-native-particles-webgl",
   "bugs": {
-    "url": "https://github.com/tim-soft/react-particles-webgl/issues"
+    "url": "https://github.com/flyskywhy/react-native-particles-webgl/issues"
   },
   "homepage": "https://timellenberger.com/particles",
   "keywords": [
     "react",
+    "react-native",
+    "react-native-web",
     "fiber",
     "three",
     "particle",
     "3D",
     "canvas"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "src/index.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
@@ -28,7 +28,6 @@
     "test": "cd example && yarn test",
     "build": "rollup -c",
     "start": "rollup -c -w",
-    "prepare": "yarn run build",
     "predeploy": "cd example && yarn install && yarn run build",
     "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" ."
   },
@@ -85,7 +84,7 @@
     "three": "^0.120.1"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "dependencies": {
     "expo-three-orbit-controls": "^2.0.0",

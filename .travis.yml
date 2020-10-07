@@ -7,7 +7,7 @@ install:
   - yarn install
   - yarn link
   - cd example
-  - yarn link react-particles-webgl
+  - yarn link react-native-particles-webgl
   - yarn install
 script:
   - yarn test

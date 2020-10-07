@@ -2,11 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.11]
+## [1.2.0]
 
 ### Added
 
-- Upgrade to react-three-fiber v3
+- Work with react-native and react-native-web
+- Change package name to react-native-particles-webgl
+- Upgrade to react-three-fiber v5
 
 ## [1.0.0]
 

@@ -9,7 +9,7 @@ import initialConfig from './config';
  * Creates a 2D/3D particle field with react-three-fiber, three.js and WebGL
  *
  * Documentation on the configuration object can be found in the github repo
- * @see https://github.com/tim-soft/react-particles-webgl
+ * @see https://github.com/flyskywhy/react-native-particles-webgl
  *
  * For a real-time configuration generator and various demos
  * @see https://timellenberger.com/particles

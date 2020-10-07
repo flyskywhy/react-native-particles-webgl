@@ -1,8 +1,8 @@
-# React Particles WebGL
+# React Native Particles WebGL
 
-> A 2D/3D particle library built with React, Three.js and WebGL
+> A 2D/3D particle library built with react-native, react-native-web, Three.js and WebGL
 
-**react-particles-webgl** was inspired by the popular [particles.js](https://github.com/VincentGarreau/particles.js/) library and built with [react-three-fiber](https://github.com/drcmda/react-three-fiber) to offer _smooth_ **60FPS** high-count particle fields in both two and three dimensions.
+**react-native-particles-webgl** was ported from [react-particles-webgl](https://github.com/tim-soft/react-particles-webgl) which was inspired by the popular [particles.js](https://github.com/VincentGarreau/particles.js/) library and built with [react-three-fiber](https://github.com/drcmda/react-three-fiber) to offer _smooth_ **60FPS** high-count particle fields in both two and three dimensions.
 
 **Documentation** [https://timellenberger.com/libraries/react-particles-webgl](https://timellenberger.com/libraries/react-particles-webgl)
 
@@ -13,10 +13,10 @@
 - 2D Green Particles [https://codesandbox.io/s/4x4lmpqz1w](https://codesandbox.io/s/4x4lmpqz1w)
 - 3D Snowfall [https://codesandbox.io/s/308zj3k7l1](https://codesandbox.io/s/308zj3k7l1)
 
-[![npm](https://img.shields.io/npm/v/react-particles-webgl.svg?color=brightgreen&style=popout-square)](https://www.npmjs.com/package/react-particles-webgl)
-[![NPM](https://img.shields.io/npm/l/react-particles-webgl.svg?color=brightgreen&style=popout-square)](https://github.com/tim-soft/react-particles-webgl/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/react-native-particles-webgl.svg?color=brightgreen&style=popout-square)](https://www.npmjs.com/package/react-native-particles-webgl)
+[![NPM](https://img.shields.io/npm/l/react-native-particles-webgl.svg?color=brightgreen&style=popout-square)](https://github.com/flyskywhy/react-native-particles-webgl/blob/master/LICENSE)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=popout-square)
-[![Travis (.org)](https://img.shields.io/travis/tim-soft/react-particles-webgl?style=flat-square)](https://travis-ci.org/tim-soft/react-particles-webgl)
+[![Travis (.org)](https://img.shields.io/travis/flyskywhy/react-native-particles-webgl?style=flat-square)](https://travis-ci.org/flyskywhy/react-native-particles-webgl)
 
 [![2D "Particles.js" Canvas](https://i.imgur.com/kpIUdV9.jpg)](https://timellenberger.com/particles)
 [![3D Particle Field](https://i.imgur.com/M34XUy6.jpg)](https://timellenberger.com/particles)
@@ -31,14 +31,14 @@
 ## Install
 
 ```bash
-yarn add react-particles-webgl three
+yarn add react-native-particles-webgl three
 ```
 
 ## Usage
 
 ```jsx
 import React from 'react';
-import ParticleField from 'react-particles-webgl';
+import ParticleField from 'react-native-particles-webgl';
 
 /**
  * The default configuation for the ParticleField component
@@ -137,8 +137,8 @@ export default () => <ParticleField config={config} />;
 Clone the repo
 
 ```bash
-git clone https://github.com/tim-soft/react-particles-webgl.git react-particles-webgl
-cd react-particles-webgl
+git clone https://github.com/flyskywhy/react-native-particles-webgl.git react-native-particles-webgl
+cd react-native-particles-webgl
 ```
 
 Setup symlinks
@@ -146,7 +146,7 @@ Setup symlinks
 ```bash
 yarn link
 cd example
-yarn link react-particles-webgl
+yarn link react-native-particles-webgl
 ```
 
 Run the library in development mode
