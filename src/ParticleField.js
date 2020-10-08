@@ -15,6 +15,7 @@ const r = 400;
  * Creates a particle cloud with various config options
  */
 const ParticleField = ({
+  state,
   particles,
   lines,
   direction,
@@ -90,6 +91,7 @@ const ParticleField = ({
     pointMaterial,
     particlesData,
     particlePositions,
+    particleColors,
     bounds
   ] = useMemo(
     () =>
@@ -117,11 +119,16 @@ const ParticleField = ({
     pointCloudGeometry,
     particlesData,
     particlePositions,
+    particleColors,
     linePositions,
     lineColors,
     showLines: lines.visible,
     boundaryType
   };
+
+  if (state) {
+    state.current = animation.current;
+  }
 
   // Direct access to render loop, executes on each frame
   // State changes must be passed into hook via refs
@@ -129,8 +136,12 @@ const ParticleField = ({
   useFrame(() => {
     // Enables damping of OrbitControls
     controlsRef.current.update();
-    // Animate current state of particles + lines
-    animate(animation.current);
+
+    if (!state) {
+      // If no state to be used by animateCustom,
+      // then animate current state of particles + lines
+      animate(animation.current);
+    }
   });
 
   return (
@@ -196,7 +207,7 @@ ParticleField.propTypes = {
     maxSize: PropTypes.number,
     boundingBox: PropTypes.oneOf(['canvas', 'cube']),
     shape: PropTypes.oneOf(['circle', 'square']),
-    colorMode: PropTypes.oneOf(['rainbow', 'solid']),
+    colorMode: PropTypes.oneOf(['rainbow', 'solid', 'multi']),
     color: PropTypes.string,
     transparency: PropTypes.number,
     visible: PropTypes.bool

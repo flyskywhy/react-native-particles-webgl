@@ -86,19 +86,23 @@ const config = {
     visible: true
   },
   particles: {
-    // 'rainbow' or 'solid' color of particles
+    // 'rainbow' or 'solid' or 'multi' color of particles
     colorMode: 'rainbow',
-    // Color of lines if colorMode: 'solid', must be hex color
+    // Color of particles if colorMode: 'solid', must be hex color
     color: '#3FB568',
+    // Colors of particles if colorMode: 'multi', must be hex color
+    colors: undefined, // ['#771112']
+    // Positions of particles
+    positions: undefined, // [{x: 20, y: 5, z: 3}],
     // Transparency of particles
+    count: 500, // or positions.length above
+    // The minimum particle size
     transparency: 0.9,
     // 'square' or 'circle' shape of particles
     shape: 'square',
     // 'canvas' or 'cube' boundary of particles
     boundingBox: 'canvas',
     // The exact number of particles to render
-    count: 500,
-    // The minimum particle size
     minSize: 10,
     // The maximum particle size
     maxSize: 75,
@@ -130,6 +134,15 @@ const config = {
 };
 
 export default () => <ParticleField config={config} />;
+```
+
+If you want to animateCustom instead of src/lib/animates.js :
+```
+let particleState = {};
+...
+<ParticleField config={config} state={particleState} />;
+...
+animateCustom(particleState.current);
 ```
 
 ## Local Development

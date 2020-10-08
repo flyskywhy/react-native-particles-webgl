@@ -6,6 +6,8 @@ import {
   ShaderMaterial,
   Vector3
 } from 'three';
+import hexRgb from 'hex-rgb';
+import isHex from 'is-hexcolor';
 import {
   getParticleVertexShader,
   getParticleFragmentShader
@@ -23,6 +25,8 @@ export default ({
   const {
     boundingBox,
     count,
+    positions,
+    colors,
     colorMode,
     color,
     shape,
@@ -33,11 +37,12 @@ export default ({
   } = particles;
   // Add particles to geometry
   // Maintain two arrays
-  // particlePositions contains random x,y,z coords for each particle
+  // particlePositions contains x,y,z coords for each particle
   // particlesData contains a random x,y,z velocity vector for each particle
   const pointCloudGeometry = new BufferGeometry();
   const particlePositions = new Float32Array(count * 3);
   const particleSizes = new Float32Array(count);
+  const particleColors = new Float32Array(count * 3);
   const particlesData = [];
 
   let xBounds;
@@ -56,16 +61,26 @@ export default ({
     zBounds = dimension === '2D' ? 0 : r;
   }
 
-  for (let i = 0; i < count; i += 1) {
-    // Calculate possible (x, y, z) location of particle
-    // within the size of the canvas or cube size
-    const x = Math.random() * xBounds - xBounds / 2;
-    const y = Math.random() * yBounds - yBounds / 2;
-    const z = Math.random() * zBounds - zBounds / 2;
-    particlePositions[i * 3] = x;
-    particlePositions[i * 3 + 1] = y;
-    particlePositions[i * 3 + 2] = z;
+  if (positions) {
+    for (let i = 0; i < count; i += 1) {
+      particlePositions[i * 3] = positions[i].x;
+      particlePositions[i * 3 + 1] = positions[i].y;
+      particlePositions[i * 3 + 2] = positions[i].z;
+    }
+  } else {
+    for (let i = 0; i < count; i += 1) {
+      // Calculate possible (x, y, z) location of particle
+      // within the size of the canvas or cube size
+      const x = Math.random() * xBounds - xBounds / 2;
+      const y = Math.random() * yBounds - yBounds / 2;
+      const z = Math.random() * zBounds - zBounds / 2;
+      particlePositions[i * 3] = x;
+      particlePositions[i * 3 + 1] = y;
+      particlePositions[i * 3 + 2] = z;
+    }
+  }
 
+  for (let i = 0; i < count; i += 1) {
     // Choose size of each particle
     particleSizes[i] = Math.random() * (maxSize - minSize) + minSize;
 
@@ -85,6 +100,21 @@ export default ({
     });
   }
 
+  if (colors) {
+    for (let i = 0; i < count; i += 1) {
+      if (isHex(colors[i])) {
+        const { red, green, blue } = hexRgb(colors[i]);
+        particleColors[i * 3] = (red / 255).toFixed(2);
+        particleColors[i * 3 + 1] = (green / 255).toFixed(2);
+        particleColors[i * 3 + 2] = (blue / 255).toFixed(2);
+      } else {
+        particleColors[i * 3] = 1;
+        particleColors[i * 3 + 1] = 1;
+        particleColors[i * 3 + 2] = 1;
+      }
+    }
+  }
+
   pointCloudGeometry.setDrawRange(0, count);
   pointCloudGeometry.setAttribute(
     'position',
@@ -93,6 +123,10 @@ export default ({
   pointCloudGeometry.setAttribute(
     'size',
     new BufferAttribute(particleSizes, 1).setUsage(DynamicDrawUsage)
+  );
+  pointCloudGeometry.setAttribute(
+    'color',
+    new BufferAttribute(particleColors, 3).setUsage(DynamicDrawUsage)
   );
 
   // Material for particle, use shaders to morph shape and color
@@ -124,6 +158,7 @@ export default ({
     pointMaterial,
     particlesData,
     particlePositions,
+    particleColors,
     bounds
   ];
 };

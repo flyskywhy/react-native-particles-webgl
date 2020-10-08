@@ -14,7 +14,7 @@ import initialConfig from './config';
  * For a real-time configuration generator and various demos
  * @see https://timellenberger.com/particles
  */
-const ParticleCanvas = ({ config }) => {
+const ParticleCanvas = ({ config, state }) => {
   const [clientSide, setClientSide] = useState(false);
   useEffect(() => {
     setClientSide(true);
@@ -30,7 +30,7 @@ const ParticleCanvas = ({ config }) => {
           : initialConfig.antialias
       }}
     >
-      <ParticleField {...merge({}, initialConfig, config)} />
+      <ParticleField {...merge({}, initialConfig, config)} state={state} />
     </Canvas>
   );
 };

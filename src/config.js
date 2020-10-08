@@ -29,10 +29,12 @@ export default {
   particles: {
     colorMode: 'rainbow',
     color: '#3FB568',
+    colors: undefined,
+    positions: undefined,
+    count: 500,
     transparency: 0.9,
     shape: 'square',
     boundingBox: 'canvas',
-    count: 500,
     minSize: 10,
     maxSize: 75,
     visible: true

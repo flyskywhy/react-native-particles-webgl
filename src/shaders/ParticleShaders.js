@@ -45,8 +45,9 @@ export const getParticleVertexShader = ({
 }) => `
 // Size attribute for particle geometry
 attribute float size;
+attribute vec3 color;
 
-// Calculate color based on particle position
+// Calculate color based on particle position or attribute
 varying vec3 vColor;
 
 void main() {
@@ -56,6 +57,7 @@ void main() {
 
   ${colorMode === 'rainbow' ? rainbowVertextColors : ''}
   ${colorMode === 'solid' ? solidVertexColors({ color }) : ''}
+  ${colorMode === 'multi' ? 'vColor = color;' : ''}
 }
 `;
 
@@ -78,7 +80,6 @@ if (r > 1.0) {
  */
 export const getParticleFragmentShader = ({ particleShape, transparency }) => `
 // Color from uniforms arg
-uniform vec3 color;
 
 // Color calculated from vertex shader, based on particle position
 varying vec3 vColor;
