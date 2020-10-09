@@ -1,6 +1,6 @@
 {
   "name": "react-native-particles-webgl",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A 2D/3D particle library built on react-native, react-native-web, Three.js and WebGL",
   "author": "Tim Ellenberger <timellenberger@gmail.com>",
   "license": "MIT",
