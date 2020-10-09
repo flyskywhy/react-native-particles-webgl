@@ -39,6 +39,7 @@ export default {
     maxSize: 75,
     visible: true
   },
+  cameraPosition: [0, 0, 750],
   cameraControls: {
     enabled: true,
     enableDamping: true,

@@ -109,6 +109,8 @@ const config = {
     // true/false render particles
     visible: true
   },
+  // x, y, z position of camera
+  cameraPosition: [0, 0, 750],
   /*
    * The camera rig is comprised of Three.js OrbitControls
    * Pass any valid OrbitControls properties, consult docs for more info

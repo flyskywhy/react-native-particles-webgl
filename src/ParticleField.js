@@ -20,6 +20,7 @@ const ParticleField = ({
   lines,
   direction,
   showCube,
+  cameraPosition,
   cameraControls,
   dimension,
   velocity,
@@ -37,7 +38,7 @@ const ParticleField = ({
   gl.setPixelRatio(devicePixelRatio);
 
   // Default distance from camera to particle field
-  const distToParticles = 750;
+  const distToParticles = cameraPosition[2];
 
   // Setup camera
   controlsRef.current = useMemo(() => {
@@ -58,7 +59,7 @@ const ParticleField = ({
     // Remove event listeners from previous controls if they exist
     // Set initial camera position if controls haven't taken over yet
     if (controlsRef.current) controlsRef.current.dispose();
-    else camera.position.set(0, 0, distToParticles);
+    else camera.position.set(...cameraPosition);
 
     // Setup movement controls for mouse/touch to manipulate camera position
     // https://threejs.org/docs/#examples/controls/OrbitControls
@@ -74,7 +75,7 @@ const ParticleField = ({
 
   // When the resetCameraFlag option is toggled to 'true', reset camera position
   if (cameraControls.resetCameraFlag === true) {
-    camera.position.set(0, 0, distToParticles);
+    camera.position.set(...cameraPosition);
   }
 
   // Compute lines between points
